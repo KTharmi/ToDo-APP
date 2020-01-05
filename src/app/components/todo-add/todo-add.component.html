@@ -1,0 +1,57 @@
+
+    <h1>Task-ADD </h1>
+
+
+    
+      <form [formGroup]='form' (ngSubmit)="onsubmit()">
+        <div  class="example-container">
+          <div class="form-group ">
+          <mat-form-field>
+          <input  formControlName="title" matInput placeholder="Title">
+          <mat-error *ngIf="form.get('title').hasError('required')">You must enter </mat-error>
+          </mat-form-field>
+          </div>
+
+          <div class="form-group ">
+          <mat-form-field>
+          <textarea formControlName="description" matInput placeholder="Description"></textarea>
+          </mat-form-field>
+          </div>
+
+          <div class="form-group ">
+            <mat-form-field>
+              <input formControlName="due_date" matInput [matDatepicker]="picker" placeholder="due_date">
+               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          
+        
+          <div class="form-group ">
+            <mat-form-field >
+                <mat-label>Priority Order</mat-label>
+                <mat-select  formControlName="priority" matNativeControl required>
+                  <mat-option value="higher-Important">higher-Important</mat-option>
+                  <mat-option value="important">Important</mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+
+          
+        
+      </div>
+      <span *ngIf="flag" (click)="onDelete()" class="btn btn-danger" >Delete</span>
+      <span *ngIf="flag"  (click)="onUpdate()" class="btn btn-success" >update</span>
+          <button *ngIf="!flag" mat-raised-button type="submit"  >Submit</button>
+          <button *ngIf="!flag" mat-raised-button type="reset" >Cancel</button>
+      
+       <div class ='col-lg-6'>
+        <pre>
+          <code> {{form.value |json }}</code>
+        </pre>
+      </div> 
+</form>
+      
+
+
