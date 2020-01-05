@@ -10,10 +10,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './todo-edit.component.html',
   styleUrls: ['./todo-edit.component.css']
 })
-export class TodoEditComponent implements OnInit { phnArray: any[];
-  editLightArray: FormArray;
- flag = this.route.snapshot.queryParams['isEdit'];
- //selected = "Indoor";
+export class TodoEditComponent implements OnInit { displayedColumns: string[] = [ 'title', 'description', 'priority', 'startDate', 'dueDate', 'edit','del'];
+todoArray: any[];
+editArray: any[];
 
   constructor  (private _fb: FormBuilder,
     private router: Router,
@@ -21,6 +20,14 @@ export class TodoEditComponent implements OnInit { phnArray: any[];
 
 
   ngOnInit() {
+  }
+
+  goEdit(data) {
+    this.editArray = this.todoArray.filter(f => f.id == data);
+    console.log("todo",this.editArray);
+    this.router.navigate(['/addlist'], {queryParams: {  isEdit: true}});
+
+    this.todoservice.updateToDoList(this.editArray);
   }
 
 }

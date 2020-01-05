@@ -10,10 +10,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./todo-delete.component.css']
 })
 export class TodoDeleteComponent implements OnInit {
-  phnArray: any[];
-  editLightArray: FormArray;
- flag = this.route.snapshot.queryParams['isEdit'];
- //selected = "Indoor";
+  displayedColumns: string[] = [ 'title', 'description', 'priority', 'startDate', 'dueDate', 'edit','del'];
+  todoArray: any[];
+  editArray: any[];
 
   constructor  (private _fb: FormBuilder,
     private router: Router,
@@ -21,6 +20,14 @@ export class TodoDeleteComponent implements OnInit {
 
   ngOnInit() {
   }
-
-
+  onDelete(id){
+    this.todoservice.deleteToDoList(id).subscribe(
+      res => {
+        window.location.reload();
+        // this.toastr.success(this.form.get('stage_size').value+','+this.form.get('place_type').value+','+this.form.get('price').value+'!', 'Successfully Deleted!',
+        // {timeOut: 4000});;
+        // this.router.navigate(['/viewsound']);
+      }
+      );
+    }
 }
