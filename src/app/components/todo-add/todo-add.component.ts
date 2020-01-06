@@ -24,6 +24,7 @@ export class TodoAddComponent implements OnInit {
       description: ['', [Validators.required]],
       due_date: ['', [Validators.required]],
       priority: ['', [Validators.required, ]],
+      completed: ['UnCompleted'],
     });
     
   }
@@ -34,7 +35,7 @@ export class TodoAddComponent implements OnInit {
         res => {
           //this.toastr.success('Inserted!', 'Success!',
       //  {timeOut: 2000});;
-      //    this.router.navigate(['/viewhallcover']);
+        this.router.navigate(['/viewlist']);
        });
     }
   }

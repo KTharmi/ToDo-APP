@@ -25,6 +25,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { UserComponent } from './components/user/user.component';
 import {MatButtonModule,MatToolbarModule} from  '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -60,7 +61,8 @@ import { RegisterComponent } from './components/register/register.component';
     MatNativeDateModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule
     
   ],
   providers: [],

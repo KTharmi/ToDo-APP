@@ -9,7 +9,6 @@ import { HttpClientModule, HttpClient ,HttpHeaders} from '@angular/common/http';
 })
 export class TodoListService {
   
-  //server:string = 'http://localhost:8000/';
   constructor(private http: HttpClient ) { 
   }
 
@@ -20,7 +19,8 @@ export class TodoListService {
       description: form.description,
       due_date: form.due_date,
       priority: form.priority,
-      completed: form.completed,
+      completed:form.completed
+      
     };
     return this.http.post<any>('http://localhost:8000/api/list', data);
 

@@ -12,23 +12,26 @@ import { RegisterComponent } from './components/register/register.component';
 
 
 const routes: Routes = [
-  { path: '',
-   redirectTo: '/',
-    pathMatch: 'full' },
-      { path: 'register', 
-      component: RegisterComponent 
-    },
+  {
+    path: '',
+    redirectTo: '/',
+    pathMatch: 'full'
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
   {
     path: 'login',
     component: LoginComponent
   },
-  
+
   {
     path: 'addlist',
     component: TodoAddComponent
   },
 
-  
+
   {
     path: 'viewlist',
     component: TodoViewComponent
@@ -38,7 +41,7 @@ const routes: Routes = [
     component: TodoEditComponent
   },
 
-  
+
   {
     path: 'todolist',
     component: TodoListComponent
@@ -53,6 +56,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
-  
+
 })
 export class AppRoutingModule { }
