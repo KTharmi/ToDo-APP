@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TodoListComponent implements OnInit { displayedColumns: string[] = [ 'title', 'description', 'due_date'];
 todoArray: any[];
+todoArrayUndone: any[];
   constructor  (private _fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute, private todoservice: TodoListService) { }
@@ -19,6 +20,7 @@ todoArray: any[];
   ngOnInit() {this.todoservice.getToDoList().subscribe(res => {
     console.log(res);
     this.todoArray = res.data;
+    this.todoArrayUndone = this.todoArray.filter(f => f.completed == 'uncompleted');
   });
 
   }

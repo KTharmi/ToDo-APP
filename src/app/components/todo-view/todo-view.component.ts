@@ -17,5 +17,16 @@ todoArray: any[];
     console.log(res);
     this.todoArray = res.data;
   });
-  
-  }}
+
+  // onDelete(id){
+  //   this.todoservice.deleteToDoList(id).subscribe(
+  //     res => {
+  //       window.location.reload();
+  //       // this.toastr.success(this.form.get('stage_size').value+','+this.form.get('place_type').value+','+this.form.get('price').value+'!', 'Successfully Deleted!',
+  //       // {timeOut: 4000});;
+  //       // this.router.navigate(['/viewsound']);
+  //     }
+  //   );
+  //   }
+  }
+}
