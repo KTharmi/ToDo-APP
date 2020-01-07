@@ -9,17 +9,18 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent implements OnInit { phnArray: any[];
-  editLightArray: FormArray;
- flag = this.route.snapshot.queryParams['isEdit'];
- //selected = "Indoor";
-
+export class TodoListComponent implements OnInit { displayedColumns: string[] = [ 'title', 'description', 'due_date'];
+todoArray: any[];
   constructor  (private _fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute, private todoservice: TodoListService) { }
 
 
-  ngOnInit() {
+  ngOnInit() {this.todoservice.getToDoList().subscribe(res => {
+    console.log(res);
+    this.todoArray = res.data;
+  });
+
   }
 
 }

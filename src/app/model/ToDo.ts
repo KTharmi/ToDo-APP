@@ -11,7 +11,7 @@ export class Task{
         this.title=title;
         this.due_date=new Date();
         this.completed=false;
-        this.priority="0";
+        this.priority="important";
     }
 
 }

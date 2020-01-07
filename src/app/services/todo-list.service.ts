@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient ,HttpHeaders} from '@angular/common/http';
 //import {Todo } from '../model/ToDo';
-//import {observable} from 'rxjs';
+import {observable,BehaviorSubject} from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class TodoListService {
   
   constructor(private http: HttpClient ) { 
+  }
+
+  editToDoArray$ = new BehaviorSubject<any>({});
+
+  editToDoList(data)
+  {
+    this.editToDoArray$.next(data);
   }
 
   addToDoList(form) {
@@ -53,5 +62,7 @@ export class TodoListService {
   getToDoList() {
     return this.http.get<any>('http://localhost:8000/api/lists');
   }
+
+  
   
 }
