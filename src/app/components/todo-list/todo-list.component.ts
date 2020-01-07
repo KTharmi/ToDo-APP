@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent implements OnInit { displayedColumns: string[] = [ 'title', 'description', 'due_date'];
+export class TodoListComponent implements OnInit { displayedColumns: string[] = [ 'completed','title', 'description', 'due_date'];
 todoArray: any[];
 todoArrayUndone: any[];
   constructor  (private _fb: FormBuilder,
@@ -22,7 +22,16 @@ todoArrayUndone: any[];
     this.todoArray = res.data;
     this.todoArrayUndone = this.todoArray.filter(f => f.completed == 'uncompleted');
   });
-
   }
-
 }
+  //  onsubmit() {
+  //   if (id) {
+  //     console.log(this.form.value);
+  //     this.todoservice.selectionToDoList(this.form.value).subscribe(
+  //       res => {
+  //         //this.toastr.success('Inserted!', 'Success!',
+  //     //  {timeOut: 2000});;
+  //       this.router.navigate(['/viewlist']);
+  //      });
+  //   }
+  // }

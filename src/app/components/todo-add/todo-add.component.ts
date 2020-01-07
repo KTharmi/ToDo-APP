@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TodoAddComponent implements OnInit {
   public form: FormGroup;
-  flag = this.route.snapshot.queryParams['isEdit'];
+  //flag = this.route.snapshot.queryParams['isEdit'];
 
   constructor  (private _fb: FormBuilder,
     private router: Router,

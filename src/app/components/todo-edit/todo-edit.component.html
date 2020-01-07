@@ -1,23 +1,46 @@
 <body class = "body">
     <h1>TODO List -EDIT </h1>
 
+    <form [formGroup]='form' (ngSubmit)="onsubmit()">
+      <div  class="example-container">
+        <div class="form-group ">
+        <mat-form-field>
+        <input  formControlName="title" matInput placeholder="{{title}}">
+        </mat-form-field>
+        </div>
 
-    <div class="example-container">
-      <mat-card class="example-card">
-        <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
-          <mat-card-title>Confirm</mat-card-title>
-          <mat-card-subtitle>{{todo.title}} todo activity delete!</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
-            <button mat-button>YES</button>
-            <button mat-button routerLink="/viewlist" >NO</button>
-          </mat-card-actions>
-        </mat-card>
+        <div class="form-group ">
+        <mat-form-field>
+        <textarea formControlName="description" matInput placeholder="Description"></textarea>
+        </mat-form-field>
+        </div>
+
+        <div class="form-group ">
+          <mat-form-field>
+            <input formControlName="dueDate" matInput [matDatepicker]="picker" placeholder="due_date">
+             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+      
+        <div class="form-group ">
+          <mat-form-field >
+              <mat-label>Priority Order</mat-label>
+              <mat-select  formControlName="priority" matNativeControl required>
+                <mat-option value="higher-Important">higher-Important</mat-option>
+                <mat-option value="important">Important</mat-option>
+              </mat-select>
+          </mat-form-field>
+        </div>
+
         
-        <button mat-button>UPDATE!</button>
-
-      </div>
+      
+    </div>
+    
+        <button mat-raised-button (click) ="onUpdate"  >Update</button>
+  </form>
+    
 </body>
 
 

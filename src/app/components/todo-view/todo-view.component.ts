@@ -9,8 +9,12 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './todo-view.component.html',
   styleUrls: ['./todo-view.component.css']
 })
-export class TodoViewComponent implements OnInit {displayedColumns: string[] = [ 'title', 'description', 'priority', 'completed','created_at', 'due_date'];
-todoArray: any[];
+export class TodoViewComponent implements OnInit {displayedColumns: string[] = [ 'title', 'description', 'priority', 'completed','created_at', 'due_date','edit','del'];
+displayedColumns2: string[] = [ 'title', 'description', 'priority', 'completed','created_at', 'due_date', 'edit','del'];
+  todoArray: any[];
+  todoArrayDone: any[];
+  todoArrayUndone: any[];
+  editArray: any[];
 
   constructor  (private _fb: FormBuilder, private todoservice: TodoListService,  private router: Router, private route: ActivatedRoute) { }
   ngOnInit() {this.todoservice.getToDoList().subscribe(res => {
@@ -18,15 +22,26 @@ todoArray: any[];
     this.todoArray = res.data;
   });
 
-  // onDelete(id){
-  //   this.todoservice.deleteToDoList(id).subscribe(
-  //     res => {
-  //       window.location.reload();
+  }
+
+  onDelete(id){
+    this.todoservice.deleteToDoList(id).subscribe(
+     res => {
+       window.location.reload();
   //       // this.toastr.success(this.form.get('stage_size').value+','+this.form.get('place_type').value+','+this.form.get('price').value+'!', 'Successfully Deleted!',
   //       // {timeOut: 4000});;
-  //       // this.router.navigate(['/viewsound']);
-  //     }
-  //   );
-  //   }
-  }
-}
+  
+  // this.router.navigate(['/deletelist']);
+   });
+    }
+
+     goEdit(data){
+      this.editArray = this.todoArray.filter(f => f.id == data);
+       console.log("todo",this.editArray);
+      this.router.navigate(['/editlist']);
+  
+      this.todoservice.editToDoList(this.editArray);
+     };
+   
+
+    }

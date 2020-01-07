@@ -18,7 +18,7 @@ export class TodoListService {
 
   editToDoList(data)
   {
-    this.editToDoArray$.next(data);
+   this.editToDoArray$.next(data);
   }
 
   addToDoList(form) {
@@ -35,12 +35,12 @@ export class TodoListService {
 
   }
   updateToDoList(form) {
-    console.log(form.id);
+    console.log(form);
     
     const data = {
       id:form.id,
       title: form.title,
-      description: form.description,
+     description: form.description,
       due_date: form.due_date,
       priority: form.priority,
       completed: form.completed,
@@ -61,6 +61,17 @@ export class TodoListService {
 
   getToDoList() {
     return this.http.get<any>('http://localhost:8000/api/lists');
+  }
+
+  selectionToDoList(form) {
+    console.log(form.id);
+    
+    const data = {
+      id:form.id,
+      completed: form.completed,
+
+    };
+    return this.http.post<any>('http://localhost:8000/api/list/selection'+data.id,data)
   }
 
   

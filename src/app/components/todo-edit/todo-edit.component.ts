@@ -10,9 +10,10 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './todo-edit.component.html',
   styleUrls: ['./todo-edit.component.css']
 })
-export class TodoEditComponent implements OnInit { displayedColumns: string[] = [ 'title', 'description', 'priority', 'startDate', 'dueDate', 'edit','del'];
+export class TodoEditComponent implements OnInit { displayedColumns: string[] = [ 'title', 'description', 'priority',  'dueDate'];
 todoArray: any[];
 editArray: any[];
+public form: FormGroup;
 
   constructor  (private _fb: FormBuilder,
     private router: Router,
@@ -20,14 +21,30 @@ editArray: any[];
 
 
   ngOnInit() {
+      this.todoservice.editToDoArray$.subscribe(data => {
+        this.form = this._fb.group({
+          id:[data[0].id,[Validators.required, Validators.min(1)]],
+         title: [data[0].title, [Validators.required]],
+         description: [data[0].description, [Validators.required]],
+         priority: [data[0].priority, [Validators.required]],
+         dueDate: [data[0].due_date,[Validators.required]],
+         check: [data[0].check, [Validators.required]]
+        });
+      })
+    }
+
+    
+
+    onUpdate() {
+      if (this.form.valid) {
+        console.log(this.form.get('id').value);
+        this.todoservice.updateToDoList(this.form.value).subscribe(
+          res => {
+            this.router.navigate(['/todolist']);
+          }
+        );
+       
+      }
+    }
   }
-
-  goEdit(data) {
-    this.editArray = this.todoArray.filter(f => f.id == data);
-    console.log("todo",this.editArray);
-    this.router.navigate(['/addlist'], {queryParams: {  isEdit: true}});
-
-    this.todoservice.updateToDoList(this.editArray);
-  }
-
-}
+  

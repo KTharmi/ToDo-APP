@@ -1,6 +1,8 @@
 .example-container {
     display: flex;
     flex-direction: column;
+    font:bold;
+    color: black;
   }
   
   .example-container > * {

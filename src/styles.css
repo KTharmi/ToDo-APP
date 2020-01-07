@@ -2,6 +2,42 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-         background: url('/assets/img/checklist.jpg');
-         color:  gray;
+         background: url('/assets/img/images2.jpg');
+         background-repeat: no-repeat;
+         background-size: cover;
+         background-size: 100% 100%;
+         overflow:hidden;
+         overflow-y: auto;
+         color: darkblue;
         }
+        .row mt-5 mb-5{
+            padding-left: 60px;
+            padding-bottom: 60px;
+            padding-right: 60px;
+            padding-top: 60px;
+         }
+         .button {
+          background-color: #4CAF50; /* Green */
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+        }
+        table {
+            border-collapse: collapse;
+          }
+          
+          table, th, td {
+            border: 1px solid black;
+           text-align:center;
+          }
+          input[type=text] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+          }
+
