@@ -14,7 +14,7 @@ export class TodoEditComponent implements OnInit { displayedColumns: string[] = 
 todoArray: any[];
 editArray: any[];
 public form: FormGroup;
-
+//form.FormGroup.controls['title'].disable();
   constructor  (private _fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute, private todoservice: TodoListService) { }

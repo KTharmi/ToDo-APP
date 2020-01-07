@@ -21,7 +21,7 @@
           <div class="form-group ">
 
             <mat-form-field>
-              <input formControlName="due_date"  matInput [matDatepicker]="picker" placeholder="due_date">
+              <input formControlName="due_date" matInput [min]="minDate" [matDatepickerFilter]="myFilter"   matInput [matDatepicker]="picker" placeholder="Due Date">
                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -44,7 +44,7 @@
       
           <button mat-raised-button type="submit"  >Submit</button>
           <button  mat-raised-button type="reset" >Cancel</button>
-      
+          <button  mat-raised-button routerLink="/todolist" >ToDo</button>
        <!-- <div class ='col-lg-6'>
         <pre>
           <code> {{form.value |json }}</code>

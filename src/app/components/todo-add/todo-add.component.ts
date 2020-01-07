@@ -11,6 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TodoAddComponent implements OnInit {
   public form: FormGroup;
+  minDate = new Date('created_at');
+  myFilter = (d: Date): boolean => {
+    const day = d.getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 ;
+  }
+  //maxDate = new Date(2020, 0, 1);
   //flag = this.route.snapshot.queryParams['isEdit'];
 
   constructor  (private _fb: FormBuilder,
@@ -22,7 +29,7 @@ export class TodoAddComponent implements OnInit {
     this.form = this._fb.group({
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      due_date: ['', [Validators.required]],
+      due_date: ['', [Validators.required,]],
       priority: ['', [Validators.required, ]],
       completed: ['UnCompleted'],
     });

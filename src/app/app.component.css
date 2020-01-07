@@ -4,7 +4,7 @@
  .button {
   background-color: #4CAF50; /* Green */
   border: none;
-  color: white;
+  color: black;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -30,3 +30,12 @@
   /*change color of underline*/
   background-color: #100E0E !important;
  }
+ .card {
+  box-shadow: 0 15px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 1200px;
+  width:700px;
+  height: 500px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}

@@ -40,10 +40,9 @@ export class TodoListService {
     const data = {
       id:form.id,
       title: form.title,
-     description: form.description,
+      description: form.description,
       due_date: form.due_date,
       priority: form.priority,
-      completed: form.completed,
 
     };
     return this.http.post<any>('http://localhost:8000/api/list/'+data.id,data)
