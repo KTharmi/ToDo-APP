@@ -41,18 +41,19 @@ export class TodoListService {
       id:form.id,
       title: form.title,
       description: form.description,
-      due_date: form.due_date,
+      due_date: form.dueDate,
       priority: form.priority,
+      completed:form.completed
 
     };
     return this.http.post<any>('http://localhost:8000/api/list/'+data.id,data)
   }
   
 
-  viewToDoList(id)
-  {
-    return this.http.get<any>('http://localhost:8000/api/list/' + id);
-  }
+  // viewToDoList(id)
+  // {
+  //   return this.http.get<any>('http://localhost:8000/api/list/' + id);
+  // }
   deleteToDoList(id)
   {
     return this.http.delete<any>('http://localhost:8000/api/list/' + id);
@@ -70,9 +71,9 @@ export class TodoListService {
       completed: form.completed,
 
     };
-    return this.http.post<any>('http://localhost:8000/api/list/selection'+data.id,data)
+    return this.http.post<any>('http://localhost:8000/api/list/selection'+data.id,data);
   }
-
+  
   
   
 }

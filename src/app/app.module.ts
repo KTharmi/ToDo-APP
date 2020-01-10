@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule ,HttpHeaders} from '@angular/common/http';
+import { HttpClientModule ,HttpHeaders, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +26,13 @@ import {MatButtonModule,MatToolbarModule} from  '@angular/material';
 import { RegisterComponent } from './components/register/register.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
-
+import { AlertComponent } from './components/alert/alert.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MessageComponent } from './components/message/message.component';
+import { HomeComponent } from './components/home/home.component';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
+//import { fakeBackendProvider } from './helpers/fake-backend';
 
 
 
@@ -44,6 +50,9 @@ import {MatListModule} from '@angular/material/list';
     LoginComponent,
     UserComponent,
     RegisterComponent,
+    AlertComponent,
+    MessageComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,13 +70,17 @@ import {MatListModule} from '@angular/material/list';
     ReactiveFormsModule, 
     MatNativeDateModule,
     MatProgressSpinnerModule,
-    MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    MatListModule
-    
+    MatListModule,
+    MatDialogModule,
+    MatButtonModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [MessageComponent],
 })
 export class AppModule { }

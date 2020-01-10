@@ -3,13 +3,21 @@
         <app-header></app-header>
     </div>
 </div>
-<body>
-    <div  class="row mt-5 mb-5 ">
-        
-    <div class="card">
-        <router-outlet></router-outlet>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
-    </div >
+</nav>
+<body>
+    <!-- <div  class="row mt-5 mb-5 ">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    <div class="card"> -->
+        <!-- <alert></alert> -->
+        <router-outlet></router-outlet>
+    <!-- </div>
+    </div > -->
     
     <hr>
 </body>

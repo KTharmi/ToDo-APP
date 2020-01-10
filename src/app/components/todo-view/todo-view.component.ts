@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { TodoListService } from 'src/app/services/todo-list.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import {MessageComponent } from '../message/message.component'
 
 @Component({
   selector: 'todo-view',
@@ -16,7 +18,7 @@ displayedColumns2: string[] = [ 'title', 'description', 'priority', 'completed',
   todoArrayUndone: any[];
   editArray: any[];
 
-  constructor  (private _fb: FormBuilder, private todoservice: TodoListService,  private router: Router, private route: ActivatedRoute) { }
+  constructor  (private _fb: FormBuilder, private todoservice: TodoListService,  private router: Router, private route: ActivatedRoute,public dialog: MatDialog) { }
   ngOnInit() {this.todoservice.getToDoList().subscribe(res => {
     console.log(res);
     this.todoArray = res.data;
@@ -24,15 +26,27 @@ displayedColumns2: string[] = [ 'title', 'description', 'priority', 'completed',
 
   }
 
-  onDelete(id){
-    this.todoservice.deleteToDoList(id).subscribe(
-     res => {
-       window.location.reload();
-  //       // this.toastr.success(this.form.get('stage_size').value+','+this.form.get('place_type').value+','+this.form.get('price').value+'!', 'Successfully Deleted!',
-  //       // {timeOut: 4000});;
-  
-  // this.router.navigate(['/deletelist']);
-   });
+  openDialog(id): void {
+    const dialogRef = this.dialog.open(MessageComponent, {
+      width: '350px',
+      data: "Do you confirm the deletion of this data?"
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Yes clicked');
+        // DO SOMETHING
+        this.todoservice.deleteToDoList(id).subscribe(
+          res => {
+            window.location.reload();
+            this.router.navigate(['/todoList']);
+          }
+        );
+      }
+      else{
+        
+      }
+    });
+ 
     }
 
      goEdit(data){

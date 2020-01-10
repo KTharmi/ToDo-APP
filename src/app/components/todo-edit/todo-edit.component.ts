@@ -23,7 +23,7 @@ public form: FormGroup;
   ngOnInit() {
       this.todoservice.editToDoArray$.subscribe(data => {
         this.form = this._fb.group({
-          id:[data[0].id,[Validators.required, Validators.min(1)]],
+          id:[data[0].id],
          title: [data[0].title, [Validators.required]],
          description: [data[0].description, [Validators.required]],
          priority: [data[0].priority, [Validators.required]],
@@ -36,7 +36,8 @@ public form: FormGroup;
     
 
     onUpdate() {
-      if (this.form.valid) {
+      console.log(this.form.value)
+     
         console.log(this.form.get('id').value);
         this.todoservice.updateToDoList(this.form.value).subscribe(
           res => {
@@ -45,6 +46,6 @@ public form: FormGroup;
         );
        
       }
-    }
+    
   }
   

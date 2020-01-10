@@ -1,7 +1,7 @@
 <div class = "content">
     <h1>TODO List -EDIT </h1>
 
-    <form [formGroup]='form' >
+    <form [formGroup]='form' novalidate >
       <div  class="example-container">
         <div class="form-group ">
         <mat-form-field >
@@ -36,7 +36,7 @@
 
     </div>
     
-        <button mat-raised-button (click) ="onUpdate"  >Update</button>
+        <button mat-button (click) ="onUpdate()">Update</button>
   </form>
     
 </div>
