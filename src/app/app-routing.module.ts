@@ -30,27 +30,27 @@ const routes: Routes = [
 
   {
     path: 'addlist',
-    component: TodoAddComponent
+    component: TodoAddComponent, canActivate: [AuthGuard]  
   },
 
 
   {
     path: 'viewlist',
-    component: TodoViewComponent
+    component: TodoViewComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'editlist',
-    component: TodoEditComponent
+    component: TodoEditComponent, canActivate: [AuthGuard] 
   },
 
 
   {
     path: 'todolist',
-    component: TodoListComponent
+    component: TodoListComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'deletelist',
-    component: TodoDeleteComponent
+    component: TodoDeleteComponent, canActivate: [AuthGuard] 
   },
   {
     path: '', component: HomeComponent, canActivate: [AuthGuard] 

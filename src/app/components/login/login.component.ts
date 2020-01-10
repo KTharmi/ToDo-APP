@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService } from 'src/app/services/alert.service';
 import {  AuthenticationService } from 'src/app/services/authentication.service';
-//@Component({ templateUrl: 'login.component.html' })
+
 
 @Component({
   selector: 'app-login',
@@ -40,13 +40,6 @@ export class LoginComponent implements OnInit {
   this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/todolist';
 
   }
-  // login() : void {
-  //   if(this.username == 'admin' && this.password == 'admin'){
-  //     this.router.navigateByUrl("addlist");
-  //   }else {
-  //     alert("Invalid credentials");
-  //   }
-  // }
   get f() { return this.loginForm.controls; }
 
   onSubmit() {
